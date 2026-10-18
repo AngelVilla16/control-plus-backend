@@ -26,7 +26,7 @@ export const registro = async (req:Request, res:Response)=>{
         
         const query = 'INSERT INTO usuarios(nombre, correo, contrasena) VALUES(?,?,?)';
 
-        const [result] = await pool.query(query, [nombre, correo, contrasena]);
+        const [result] = await pool.query(query, [nombre, correo, hash]);
 
         return res.status(201).json({mensaje:"Usuario registrado con exito!"});
     }
