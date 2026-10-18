@@ -14,8 +14,9 @@ export const registro = async (req:Request, res:Response)=>{
 
     try{
         const validar = 'SELECT correo FROM usuarios WHERE correo = ?';
+        const [resultValidar]:any = await pool.query(validar, [correo]); 
 
-        if((validar as any).length>0){
+        if((resultValidar as any).length>0){
             return res.status(400).json({mensaje:"Este correo ya esta en uso"});
         }
         //Metodo hash para encriptar la contraseña: bcrypt
