@@ -10,7 +10,7 @@ export const login = async (req:Request, res:Response)=>{
     }
 
     try{
-        const validar = 'SELECT correo, contrasena FROM usuarios WHERE correo = ?';
+        const validar = 'SELECT id_usuario, nombre, correo, contrasena FROM usuarios WHERE correo = ?';
         const [result] = await pool.execute(validar, [correo])
 
         if((result as any).length === 0){
