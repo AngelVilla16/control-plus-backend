@@ -1,0 +1,10 @@
+name: Deploy
+on:
+  push:
+    branches: [develop]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - run: /home/angel/deploy.sh
